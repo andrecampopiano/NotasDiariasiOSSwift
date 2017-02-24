@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3OK-rq-i5E">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Notas Diárias-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ListarNotasViewController" customModule="NotasDiarias" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,118 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fDS-is-hya">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fDS-is-hya" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0LW-bZ-CYw"/>
+                            <constraint firstItem="fDS-is-hya" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5xQ-ok-VhA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fDS-is-hya" secondAttribute="bottom" id="T8D-bK-Ylg"/>
+                            <constraint firstAttribute="trailing" secondItem="fDS-is-hya" secondAttribute="trailing" id="fZO-5r-bxn"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Notas Diárias" id="QK8-P3-P9K">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fwf-nG-LcK">
+                            <connections>
+                                <segue destination="ZA0-pN-ckE" kind="show" identifier="segueNovaNota" id="ORL-lF-7sB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="fDS-is-hya" id="2A8-Mu-Jbl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="976.79999999999995" y="-544.67766116941539"/>
+        </scene>
+        <!--Nova Nota-->
+        <scene sceneID="B33-H3-pzV">
+            <objects>
+                <viewController title="Nova Nota" automaticallyAdjustsScrollViewInsets="NO" id="ZA0-pN-ckE" customClass="NovaNotaViewController" customModule="NotasDiarias" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ovy-UY-Qk6"/>
+                        <viewControllerLayoutGuide type="bottom" id="ftE-6t-KYc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMx-K1-b9S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LZk-As-Lh3">
+                                <rect key="frame" x="8" y="110" width="359" height="501"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W02-UH-e4u">
+                                <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                                <color key="backgroundColor" red="0.1843137255" green="0.36078431370000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Salvar"/>
+                                <connections>
+                                    <action selector="btnSalvar:" destination="ZA0-pN-ckE" eventType="touchUpInside" id="Pf9-YN-Huq"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite titulo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o1V-4R-JtD">
+                                <rect key="frame" x="8" y="72" width="359" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="o1V-4R-JtD" firstAttribute="top" secondItem="ovy-UY-Qk6" secondAttribute="bottom" constant="8" id="5k6-uM-X57"/>
+                            <constraint firstItem="LZk-As-Lh3" firstAttribute="leading" secondItem="zMx-K1-b9S" secondAttribute="leading" constant="8" id="6S8-rL-Bjr"/>
+                            <constraint firstItem="ftE-6t-KYc" firstAttribute="top" secondItem="W02-UH-e4u" secondAttribute="bottom" id="75A-2i-MEG"/>
+                            <constraint firstItem="W02-UH-e4u" firstAttribute="top" secondItem="LZk-As-Lh3" secondAttribute="bottom" constant="8" id="8QB-sh-xY3"/>
+                            <constraint firstAttribute="trailing" secondItem="W02-UH-e4u" secondAttribute="trailing" id="9Jc-CB-SiX"/>
+                            <constraint firstItem="LZk-As-Lh3" firstAttribute="top" secondItem="o1V-4R-JtD" secondAttribute="bottom" constant="8" id="C3o-vJ-ABe"/>
+                            <constraint firstItem="W02-UH-e4u" firstAttribute="leading" secondItem="zMx-K1-b9S" secondAttribute="leading" id="D70-mm-1Pi"/>
+                            <constraint firstItem="o1V-4R-JtD" firstAttribute="leading" secondItem="zMx-K1-b9S" secondAttribute="leadingMargin" constant="-8" id="Fl6-MC-vPr"/>
+                            <constraint firstAttribute="trailing" secondItem="LZk-As-Lh3" secondAttribute="trailing" constant="8" id="gje-BT-XrQ"/>
+                            <constraint firstItem="o1V-4R-JtD" firstAttribute="trailing" secondItem="zMx-K1-b9S" secondAttribute="trailingMargin" constant="8" id="xr5-dX-9WZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nova Nota" id="rgu-DX-bjt">
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="y3A-pz-gUn"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="txtNota" destination="LZk-As-Lh3" id="4tR-0i-oem"/>
+                        <outlet property="txtTitle" destination="o1V-4R-JtD" id="iuR-h9-UEz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ds4-ov-RBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1928.8" y="-545.57721139430294"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qe1-3m-4uT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3OK-rq-i5E" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pCt-WE-b1w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Zmd-74-3Ge"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUz-KA-OVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45.600000000000001" y="-543.77811094452773"/>
         </scene>
     </scenes>
 </document>
