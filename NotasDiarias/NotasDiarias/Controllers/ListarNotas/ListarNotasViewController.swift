@@ -79,7 +79,7 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
         
         if editingStyle == .delete {
             NotaPersistencia().delete(position: indexPath.row)
-            self.recoveryListNote()
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
