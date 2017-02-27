@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		940435B81E60A179007AD423 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940435B71E60A179007AD423 /* AppDelegate.swift */; };
 		940435BD1E60A179007AD423 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940435BB1E60A179007AD423 /* Main.storyboard */; };
-		940435C01E60A179007AD423 /* NotasDiarias.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 940435BE1E60A179007AD423 /* NotasDiarias.xcdatamodeld */; };
 		940435C21E60A179007AD423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 940435C11E60A179007AD423 /* Assets.xcassets */; };
 		940435C51E60A179007AD423 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940435C31E60A179007AD423 /* LaunchScreen.storyboard */; };
 		940435D01E60A513007AD423 /* ListarNotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940435CF1E60A513007AD423 /* ListarNotasViewController.swift */; };
 		940435D31E60A52C007AD423 /* NotaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940435D11E60A52C007AD423 /* NotaCell.swift */; };
 		940435D41E60A52C007AD423 /* NotaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940435D21E60A52C007AD423 /* NotaCell.xib */; };
 		940435D91E60A5A8007AD423 /* NovaNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940435D81E60A5A8007AD423 /* NovaNotaViewController.swift */; };
-		940435DD1E60B381007AD423 /* NotaPersistencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940435DC1E60B381007AD423 /* NotaPersistencia.swift */; };
+		9438DA271E6445D3000EA63F /* NotaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438DA261E6445D3000EA63F /* NotaEntity.swift */; };
+		9438DA2A1E644675000EA63F /* NotasDiarias.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9438DA281E644675000EA63F /* NotasDiarias.xcdatamodeld */; };
+		9438DA2C1E64467C000EA63F /* NotaPersistencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438DA2B1E64467C000EA63F /* NotaPersistencia.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		940435B41E60A179007AD423 /* NotasDiarias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotasDiarias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		940435B71E60A179007AD423 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		940435BC1E60A179007AD423 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		940435BF1E60A179007AD423 /* NotasDiarias.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotasDiarias.xcdatamodel; sourceTree = "<group>"; };
 		940435C11E60A179007AD423 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		940435C41E60A179007AD423 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		940435C61E60A179007AD423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,7 +31,9 @@
 		940435D11E60A52C007AD423 /* NotaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaCell.swift; sourceTree = "<group>"; };
 		940435D21E60A52C007AD423 /* NotaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotaCell.xib; sourceTree = "<group>"; };
 		940435D81E60A5A8007AD423 /* NovaNotaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovaNotaViewController.swift; sourceTree = "<group>"; };
-		940435DC1E60B381007AD423 /* NotaPersistencia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaPersistencia.swift; sourceTree = "<group>"; };
+		9438DA261E6445D3000EA63F /* NotaEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaEntity.swift; sourceTree = "<group>"; };
+		9438DA291E644675000EA63F /* NotasDiarias.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotasDiarias.xcdatamodel; sourceTree = "<group>"; };
+		9438DA2B1E64467C000EA63F /* NotaPersistencia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaPersistencia.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +115,27 @@
 		940435DA1E60AAD1007AD423 /* Persistencia */ = {
 			isa = PBXGroup;
 			children = (
-				940435BE1E60A179007AD423 /* NotasDiarias.xcdatamodeld */,
-				940435DC1E60B381007AD423 /* NotaPersistencia.swift */,
+				9438DA2B1E64467C000EA63F /* NotaPersistencia.swift */,
+				9438DA241E64457F000EA63F /* CoreData */,
+				9438DA251E64457F000EA63F /* Entitys */,
 			);
 			path = Persistencia;
+			sourceTree = "<group>";
+		};
+		9438DA241E64457F000EA63F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9438DA281E644675000EA63F /* NotasDiarias.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		9438DA251E64457F000EA63F /* Entitys */ = {
+			isa = PBXGroup;
+			children = (
+				9438DA261E6445D3000EA63F /* NotaEntity.swift */,
+			);
+			path = Entitys;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,11 +213,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				940435D91E60A5A8007AD423 /* NovaNotaViewController.swift in Sources */,
-				940435C01E60A179007AD423 /* NotasDiarias.xcdatamodeld in Sources */,
+				9438DA2A1E644675000EA63F /* NotasDiarias.xcdatamodeld in Sources */,
 				940435D31E60A52C007AD423 /* NotaCell.swift in Sources */,
 				940435D01E60A513007AD423 /* ListarNotasViewController.swift in Sources */,
+				9438DA2C1E64467C000EA63F /* NotaPersistencia.swift in Sources */,
+				9438DA271E6445D3000EA63F /* NotaEntity.swift in Sources */,
 				940435B81E60A179007AD423 /* AppDelegate.swift in Sources */,
-				940435DD1E60B381007AD423 /* NotaPersistencia.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,18 +380,18 @@
 				940435CB1E60A179007AD423 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		940435BE1E60A179007AD423 /* NotasDiarias.xcdatamodeld */ = {
+		9438DA281E644675000EA63F /* NotasDiarias.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				940435BF1E60A179007AD423 /* NotasDiarias.xcdatamodel */,
+				9438DA291E644675000EA63F /* NotasDiarias.xcdatamodel */,
 			);
-			currentVersion = 940435BF1E60A179007AD423 /* NotasDiarias.xcdatamodel */;
-			name = NotasDiarias.xcdatamodeld;
-			path = ../NotasDiarias.xcdatamodeld;
+			currentVersion = 9438DA291E644675000EA63F /* NotasDiarias.xcdatamodel */;
+			path = NotasDiarias.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

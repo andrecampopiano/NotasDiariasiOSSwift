@@ -10,7 +10,7 @@ import UIKit
 
 class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
-    var listaNotas:[Dictionary<String,String>] = []
+    var listaNotas:[NotaEntity] = []
     var navControl:String = "add"
     
     @IBOutlet weak var tableView: UITableView!
@@ -18,6 +18,8 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         self.automaticallyAdjustsScrollViewInsets = false
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -27,36 +29,56 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.recoveryListNote()
+        
+    }
+    func recoveryListNote(){
+        listaNotas = NotaPersistencia().listNotas()
+        self.tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 //listaNotas.count
+        return listaNotas.count != 0 ? listaNotas.count : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NotaCell
+        var cell = UITableViewCell()
         
-        //let nota = listaNotas[indexPath.row]
-        
-//        cell.lblSubTitle.text = nota(value(forKey: "descricao"))
-        
-        cell.lblSubTitle.text = "Testando"
-        cell.lblTitle.text = "TITULO TESTE"
-        cell.lblDate.text = "19/05/1983"
+        if listaNotas.count > 0 {
+            let cellNota = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NotaCell
+            let nota = listaNotas[indexPath.row]
+            cellNota.lblTitle.text = nota.titulo
+            cellNota.lblSubTitle.text = nota.descricao
+            
+            let formatDate = DateFormatter()
+            formatDate.dateFormat = "dd/MM/yyyy hh:mm"
+            
+            let newDate = formatDate.string(from: nota.data as Date )
+            
+            cellNota.lblDate.text = String(describing: newDate )
+            cell = cellNota
+        }else {
+            cell.textLabel?.text = "Nenhum Registro Salvo"
+        }
     
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navControl = "edit"
-        self.performSegue(withIdentifier: "segueNovaNota", sender: indexPath.row)
+        if( listaNotas.count > 0){
+            let nota = listaNotas[indexPath.row]
+            self.performSegue(withIdentifier: "segueNovaNota", sender: nota)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             
-            print("foi ai em ")
         }
     }
     
@@ -72,14 +94,10 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "segueNovaNota" {
-            
             let vc = segue.destination as! NovaNotaViewController
-            
-            if navControl == "edit" {
-                vc.nota = listaNotas[sender as! Int]
-                vc.navControl = navControl
+            if sender != nil {
+                vc.note = sender as! NotaEntity
             }
-            
             
             
         }

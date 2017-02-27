@@ -11,7 +11,7 @@ import UIKit
 class NovaNotaViewController: UIViewController {
 
     
-    var nota:Dictionary<String,String> = [:]
+    var note:NotaEntity!
     var navControl = "add"
     
     @IBOutlet weak var txtTitle: UITextField!
@@ -20,6 +20,15 @@ class NovaNotaViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.barTintColor = UIColor(red: 47/255, green: 92/255, blue: 177/255, alpha: 1)
+        
+        
+        if (note) != nil {
+            txtTitle.text = note.titulo
+            txtNota.text = note.descricao
+        }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +48,16 @@ class NovaNotaViewController: UIViewController {
     */
 
     @IBAction func btnSalvar(_ sender: Any) {
+        
+        if note != nil {
+            
+        }else {
+            let newNote = NotaEntity()
+            newNote.descricao = txtNota.text
+            newNote.titulo = txtTitle.text
+            NotaPersistencia().save(nota: newNote)
+        }
+       let _ = self.navigationController?.popViewController(animated: true)
         
     }
 }
