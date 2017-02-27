@@ -78,8 +78,14 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            NotaPersistencia().delete(position: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
+           NotaPersistencia().delete(position: indexPath.row)
+            if self.listaNotas.count > 1 {
+                self.listaNotas.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }else {
+                self.recoveryListNote()
+            }
+            
         }
     }
     
