@@ -56,6 +56,9 @@ class NotaPersistencia: NSObject {
         var notas:[NSManagedObject] = []
         let managerObjects = getManagerObjects()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Nota")
+        let orderbyDate = NSSortDescriptor(key: "data", ascending: false)
+        request.sortDescriptors = [orderbyDate]
+        
         
         do{
             let notasRec = try managerObjects.fetch(request)
