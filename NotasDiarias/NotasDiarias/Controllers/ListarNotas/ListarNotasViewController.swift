@@ -53,7 +53,7 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
             cellNota.lblSubTitle.text = nota.descricao
             
             let formatDate = DateFormatter()
-            formatDate.dateFormat = "dd/MM/yyyy hh:mm"
+            formatDate.dateFormat = "dd/MM/yyyy HH:mm"
             
             let newDate = formatDate.string(from: nota.data as Date )
             
@@ -78,7 +78,8 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            
+            NotaPersistencia().delete(position: indexPath.row)
+            self.recoveryListNote()
         }
     }
     
@@ -95,7 +96,8 @@ class ListarNotasViewController: UIViewController,UITableViewDelegate, UITableVi
         
         if segue.identifier == "segueNovaNota" {
             let vc = segue.destination as! NovaNotaViewController
-            if sender != nil {
+            if sender is NotaEntity {
+                vc.position = self.tableView.indexPathForSelectedRow?.row
                 vc.note = sender as! NotaEntity
             }
             

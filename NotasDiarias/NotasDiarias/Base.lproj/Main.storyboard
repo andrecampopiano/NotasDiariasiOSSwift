@@ -100,7 +100,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nova Nota" id="rgu-DX-bjt">
-                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="y3A-pz-gUn"/>
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="y3A-pz-gUn">
+                            <connections>
+                                <action selector="btnSalvar:" destination="ZA0-pN-ckE" id="me4-re-jxg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="txtNota" destination="LZk-As-Lh3" id="4tR-0i-oem"/>

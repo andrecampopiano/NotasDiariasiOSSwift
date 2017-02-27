@@ -13,6 +13,7 @@ class NovaNotaViewController: UIViewController {
     
     var note:NotaEntity!
     var navControl = "add"
+    var position:Int!
     
     @IBOutlet weak var txtTitle: UITextField!
     @IBOutlet weak var txtNota: UITextView!
@@ -49,15 +50,23 @@ class NovaNotaViewController: UIViewController {
 
     @IBAction func btnSalvar(_ sender: Any) {
         
-        if note != nil {
-            
-        }else {
+        if(self.txtNota.text != "" && self.txtTitle.text != ""){
             let newNote = NotaEntity()
             newNote.descricao = txtNota.text
             newNote.titulo = txtTitle.text
-            NotaPersistencia().save(nota: newNote)
+            if note != nil {
+                NotaPersistencia().update(position: self.position, notaUpd:newNote)
+            }else {
+                NotaPersistencia().save(nota: newNote)
+            }
+            let _ = self.navigationController?.popViewController(animated: true)
+        }else{
+            let alert = UIAlertController(title: "Preencha os Campos", message: "Título e o conteudo da nota devem ser preenchidos", preferredStyle: .alert)
+            let alertOk = UIAlertAction(title: "Continuar", style: .default, handler: nil)
+            alert.addAction(alertOk)
+            self.present(alert, animated: true, completion: nil)
+            
+            
         }
-       let _ = self.navigationController?.popViewController(animated: true)
-        
     }
 }
